@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Прогресс загрузки</title>
+<link href="css/style.css" type="text/css" rel="stylesheet">
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery.lprogress.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#progressbar').lprogress({
+			loadReady: true
+		});
+		
+		$('#progressbar-2').lprogress({
+			color: '41A3EC'
+		});
+
+		$('#progressbar-3').lprogress({
+			startValue : 20,
+			color: 'FEA211'
+		});
+	})
+</script>
+</head>
+<body>
+	<header>
+		<h1>Демонстрация плагина lprogress</h1>
+	</header>
+	<div id="wrapper">
+		<div class="demo">
+			<h3>Автозапуск при загрузке страницы:</h3>
+			<div id="progressbar"></div>
+		</div>
+		<div class="demo">
+			<h3>С параметрами:</h3>
+			<div id="progressbar-2"></div>
+			<div class="progress-button">
+				<a href="#" class="progressbar-step" data-step="0" data-init="progressbar-2">Reset</a>
+				<a href="#" class="progressbar-step" data-step="-20" data-init="progressbar-2">-20%</a>
+				<a href="#" class="progressbar-step" data-step="-50" data-init="progressbar-2">-50%</a>
+				<a href="#" class="progressbar-step" data-step="20" data-init="progressbar-2">+20%</a>
+				<a href="#" class="progressbar-step" data-step="50" data-init="progressbar-2">+50%</a>
+			</div>
+		</div>
+		<div class="demo">
+			<h3>Изначально 20%:</h3>
+			<div id="progressbar-3"></div>
+			<div class="progress-button">
+				<a href="#" class="progressbar-step" data-step="0" data-init="progressbar-3">Reset</a>
+				<a href="#" class="progressbar-step" data-step="-15" data-init="progressbar-3">-15%</a>
+				<a href="#" class="progressbar-step" data-step="-30" data-init="progressbar-3">-30%</a>
+				<a href="#" class="progressbar-step" data-step="15" data-init="progressbar-3">+15%</a>
+				<a href="#" class="progressbar-step" data-step="30" data-init="progressbar-3">+30%</a>
+			</div>
+		</div>
+		<p style="text-align: center;"><a style="color: #FFF;text-decoration: underline;" href="https://github.com/M-Ulyanov/L-Progress">Документация и скачать</a></p>
+	</div>
+</body>
+</html>
