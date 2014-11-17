@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Viewport-Action</title>
+<link href="css/style.css" type="text/css" rel="stylesheet">
+<link href="css/effect.css" type="text/css" rel="stylesheet">
+<link href="css/font-awesome.css" type="text/css" rel="stylesheet">
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery.viewportaction.js"></script>
+<script type="text/javascript">
+	$(function() {
+		// 1. 
+		$('.demo-eff-1-1').viewportaction({
+			effect: 'fade',
+		});
+		$('.demo-eff-1-2').viewportaction({
+			effect: 'fade',
+			customClass: 'my-class-1'
+		});
+		$('.demo-eff-1-3').viewportaction({
+			effect: 'fadeTop',
+		});
+		$('.demo-eff-1-4').viewportaction({
+			effect: 'fadeBottom',
+		});
+		$('.demo-eff-1-5').viewportaction({
+			effect: 'fadeLeft',
+		});
+		$('.demo-eff-1-6').viewportaction({
+			effect: 'fadeRight',
+		});
+
+
+		// Делим экран на блоки
+		$('.row').viewportaction({
+			oneRowViewport: true
+		});
+	})
+</script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.0.6/jquery.mousewheel.min.js" type="text/javascript" charset="utf-8"></script>
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="row-line-1 row" data-nav-viewport="true" data-nav-viewport-title="Fade">
+		<div class="row-wrap">
+			<h2>Стандартное применение эффекта <span>fade</span> </h2>
+			<div class="w-33 demo-eff-1-1 view-action">
+				<i class="fa fa-cloud-download fa-5x"></i> 
+				<h3>Cloud</h3>
+				<p>Fruitful Fruit hath, fruitful said him created bring set, behold darkness Shall lights deep fish seasons itself given likeness upon bring fill their their whose. Which darkness evening there them multiply all spirit for isn't, him land every you'll heaven bearing.</p>
+			</div>
+			<div class="w-33 demo-eff-1-1 view-action">
+				<i class="fa fa-calendar fa-5x"></i> 
+				<h3>Calendar</h3>
+				<p>Fruitful Fruit hath, fruitful said him created bring set, behold darkness Shall lights deep fish seasons itself given likeness upon bring fill their their whose. Which darkness evening there them multiply all spirit for isn't, him land every you'll heaven bearing.</p>
+			</div>
+			<div class="w-33 demo-eff-1-1 view-action">
+				<i class="fa fa-repeat fa-5x"></i> 
+				<h3>Repeat</h3>
+				<p>Fruitful Fruit hath, fruitful said him created bring set, behold darkness Shall lights deep fish seasons itself given likeness upon bring fill their their whose. Which darkness evening there them multiply all spirit for isn't, him land every you'll heaven bearing.</p>
+			</div>
+			<span class="clearfix">
+		</div>
+	</div>
+	<div class="row-line-1 row" data-nav-viewport="true" data-nav-viewport-title="FadeTop">
+		<div class="row-wrap">
+			<h2>Применение эффекта <span>fadeTop</span></h2>
+			<div class="w-33 demo-eff-1-3 view-action delay-1-eff-1-3">
+				<i class="fa fa-twitch fa-5x"></i> 
+				<h3>Twitch</h3>
+				<p>Fruitful Fruit hath, fruitful said him created bring set, behold darkness Shall lights deep fish seasons itself given likeness upon bring fill their their whose. Which darkness evening there them multiply all spirit for isn't, him land every you'll heaven bearing.</p>
+			</div>
+			<div class="w-33 demo-eff-1-3 view-action delay-2-eff-1-3">
+				<i class="fa fa-wifi fa-5x"></i> 
+				<h3>Wifi</h2>
+				<p>Fruitful Fruit hath, fruitful said him created bring set, behold darkness Shall lights deep fish seasons itself given likeness upon bring fill their their whose. Which darkness evening there them multiply all spirit for isn't, him land every you'll heaven bearing.</p>
+			</div>
+			<div class="w-33 demo-eff-1-3 view-action delay-3-eff-1-3">
+				<i class="fa fa-yelp  fa-5x"></i> 
+				<h3>Yelp</h3>
+				<p>Fruitful Fruit hath, fruitful said him created bring set, behold darkness Shall lights deep fish seasons itself given likeness upon bring fill their their whose. Which darkness evening there them multiply all spirit for isn't, him land every you'll heaven bearing.</p>
+			</div>
+			<span class="clearfix">
+		</div>
+	</div>
+	<div class="row-line-1 row" data-nav-viewport="true" data-nav-viewport-title="FadeBottom">
+		<div class="row-wrap">
+			<h2>Применение эффекта <span>fadeBottom</span></h2>
+			<div class="w-33 demo-eff-1-4 view-action ">
+				<i class="fa fa-question-circle fa-5x"></i> 
+				<h3>Question</h3>
+				<p>Fruitful Fruit hath, fruitful said him created bring set, behold darkness Shall lights deep fish seasons itself given likeness upon bring fill their their whose. Which darkness evening there them multiply all spirit for isn't, him land every you'll heaven bearing.</p>
+			</div>
+			<div class="w-33 demo-eff-1-4 view-action ">
+				<i class="fa fa-recycle fa-5x"></i> 
+				<h3>Recycle</h2>
+				<p>Fruitful Fruit hath, fruitful said him created bring set, behold darkness Shall lights deep fish seasons itself given likeness upon bring fill their their whose. Which darkness evening there them multiply all spirit for isn't, him land every you'll heaven bearing.</p>
+			</div>
+			<div class="w-33 demo-eff-1-4 view-action">
+				<i class="fa fa-exclamation-triangle fa-5x"></i> 
+				<h3>Warning</h3>
+				<p>Fruitful Fruit hath, fruitful said him created bring set, behold darkness Shall lights deep fish seasons itself given likeness upon bring fill their their whose. Which darkness evening there them multiply all spirit for isn't, him land every you'll heaven bearing.</p>
+			</div>
+			<span class="clearfix">
+		</div>
+	</div>
+	<div class="row-line-1 row" data-nav-viewport="true" data-nav-viewport-title="FadeLeft">
+		<div class="row-wrap">
+			<h2>Применение эффекта <span>fadeLeft</span></h2>
+			<div class="w-33 demo-eff-1-5 view-action">
+				<i class="fa fa-star fa-5x"></i> 
+				<h3>Star</h3>
+				<p>Fruitful Fruit hath, fruitful said him created bring set, behold darkness Shall lights deep fish seasons itself given likeness upon bring fill their their whose. Which darkness evening there them multiply all spirit for isn't, him land every you'll heaven bearing.</p>
+			</div>
+			<div class="w-33 demo-eff-1-5 view-action">
+				<i class="fa fa-tags fa-5x"></i> 
+				<h3>Tags</h2>
+				<p>Fruitful Fruit hath, fruitful said him created bring set, behold darkness Shall lights deep fish seasons itself given likeness upon bring fill their their whose. Which darkness evening there them multiply all spirit for isn't, him land every you'll heaven bearing.</p>
+			</div>
+			<div class="w-33 demo-eff-1-5 view-action">
+				<i class="fa fa-star-o fa-5x"></i> 
+				<h3>Star-o</h3>
+				<p>Fruitful Fruit hath, fruitful said him created bring set, behold darkness Shall lights deep fish seasons itself given likeness upon bring fill their their whose. Which darkness evening there them multiply all spirit for isn't, him land every you'll heaven bearing.</p>
+			</div>
+			<span class="clearfix">
+		</div>
+	</div>
+	<div class="row-line-1 row" data-nav-viewport="true" data-nav-viewport-title="FadeRight">
+		<div class="row-wrap">
+			<h2>Применение эффекта <span>fadeRight</span></h2>
+			<div class="w-33 demo-eff-1-6 view-action">
+				<i class="fa fa-unlock fa-5x"></i> 
+				<h3>Unlock</h3>
+				<p>Fruitful Fruit hath, fruitful said him created bring set, behold darkness Shall lights deep fish seasons itself given likeness upon bring fill their their whose. Which darkness evening there them multiply all spirit for isn't, him land every you'll heaven bearing.</p>
+			</div>
+			<div class="w-33 demo-eff-1-6 view-action">
+				<i class="fa  fa-thumb-tack fa-5x"></i> 
+				<h3>Thumb-tack</h2>
+				<p>Fruitful Fruit hath, fruitful said him created bring set, behold darkness Shall lights deep fish seasons itself given likeness upon bring fill their their whose. Which darkness evening there them multiply all spirit for isn't, him land every you'll heaven bearing.</p>
+			</div>
+			<div class="w-33 demo-eff-1-6 view-action">
+				<i class="fa fa-user fa-5x"></i> 
+				<h3>User</h3>
+				<p>Fruitful Fruit hath, fruitful said him created bring set, behold darkness Shall lights deep fish seasons itself given likeness upon bring fill their their whose. Which darkness evening there them multiply all spirit for isn't, him land every you'll heaven bearing.</p>
+			</div>
+			<span class="clearfix">
+		</div>
+	</div>
+	<a href="#" class="fork-git"></a>
+</div>
+<script>
+	$(function() {
+		$('.row:odd').css({'background': '#131313'});
+	});
+</script>
+</body>
+</html>
