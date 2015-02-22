@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Демонстрация плагина parsingGet</title>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="css/demo.css">
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery.parsingGet.min.js"></script>
+<script type="text/javascript">
+	document.createElement('header');
+
+	$(function(){
+			$('.filter_goods, .form_ignore, .start_parse_f').parsingGet({
+				ignoreClass: 'my_no_show',
+			});
+
+			$('.a_show').on('click', function() {
+				$('.start_parse_f').parsingGet('show');
+			});	
+	})
+</script>
+</head>
+<body>
+	<div id="wrapper">
+		<h1>parsing<span>Get</span><span class="title-info"> - jquery плагин для получения значений GET параметров и присваивания их для элементов форм</span></h1>
+		<header>
+			<h2>Удобно использовать для фильтрации товаров и услуг, форм обратной связи, поиска..</h2>
+			<span>Не нужно каждый раз запоминать и обрабатывать данные на сервере!</span>
+		</header>
+		<form class="filter_goods" action="" method="GET">
+			<div class="wrapper_form_elems">
+				<span>По типу: </span>
+				<label><input type="radio" name="type" value="1">Снять</label>
+				<label><input type="radio" name="type" value="2">Купить</label>
+			</div>
+			<div class="wrapper_form_elems">
+				<span>Ключевые слова:</span>
+				<label>
+					<input type="text" name="keywords"> 
+				</label>
+			</div>
+			<div class="wrapper_form_elems">
+				<span>Вид:	</span>
+				<label><input type="checkbox" name="cat[]" value="1">Квартира</label>
+				<label><input type="checkbox" name="cat[]" value="2">Комната</label>
+				<label><input type="checkbox" name="cat[]" value="3">Дом</label>
+				<label><input type="checkbox" name="cat[]" value="4">Участок</label>
+			</div>
+			<div class="wrapper_form_elems">
+				<span>Этаж:	</span>
+				<label><input type="checkbox" name="floor[]" value="1">1-5</label>
+				<label><input type="checkbox" name="floor[]" value="2">6-10</label>
+				<label><input type="checkbox" name="floor[]" value="3">10-15</label>
+				<label><input type="checkbox" name="floor[]" value="4">16+</label>
+			</div>
+			<div class="wrapper_form_elems">
+				<span>По типу:</span>
+				<label> 
+					<select name="currency">
+						<option value="rub">руб</option>
+						<option value="dollar">$</option>
+						<option value="euro">€</option>
+					</select>
+				</label>
+			</div>
+			<div class="wrapper_form_elems">
+				<span>Цена </span>
+				<label>
+					от:
+					<input type="number" name="price_min">
+					до: 
+					<input type="number" name="price_max">
+				</label>
+			</div>
+			<button type="submit">Подобрать варианты</button>
+		</form>
+		<header>
+			<h2>Добавить в исключения</h2>
+			<span>Плагин может НЕ запоминать значения одного или нескольких элементов!</span>
+		</header>
+		<form class="form_ignore" action="" method="GET">
+			<div class="wrapper_form_elems">
+				<span>Сохранится после перезагрузки страницы:</span>
+				<label>
+					<input type="text" name="save_input"> 
+				</label>
+			</div>
+			<div class="wrapper_form_elems">	
+				<span>Значение никогда не сохранится:</span>
+				<label>
+					<input type="text" name="ignore_input" class="my_no_show"> 
+				</label>
+			</div>	
+			<button type="submit">Перезагрузить страницу</button>
+		</form>
+		<header>
+			<h2>Отложенный старт</h2>
+			<span>Плагин загрузит значения тогда, когда вам это нужно!</span>
+		</header>
+		<form class="start_parse_f my_no_show" action="" method="GET">
+			<div class="wrapper_form_elems">
+				<span>Значение появится после нажатия на ссылку внизу блока:</span>
+				<label>
+					<input type="text" name="start_input"> 
+				</label>
+			</div>
+			<button type="submit">Запиcать в GET</button>
+			<a class="a_show" href="javascript:void(0)">Показать переданные данные</a>
+		</form>
+
+		<p style="text-align: center;"><a class="url_github" target="_blank" href="https://github.com/M-Ulyanov/ParsingGet">Подробнее о плагине на Github</a></p>
+	</div>	
+</body>
+</html>
+

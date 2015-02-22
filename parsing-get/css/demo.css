@@ -1,0 +1,91 @@
+html, body {
+	padding: 0;
+	margin: 0;
+	background: #E3DBBE;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+}
+#wrapper {
+	width: 960px;
+	margin: 0 auto;
+}
+h1 {
+	color: #111;
+}
+h1 > span {
+	color: #FFA300;
+}
+h1 .title-info {
+	color: #111;
+	font-size: 15px;
+	position: relative;
+	top: -4px;
+}
+header {
+	display: block;
+}
+header > h2 {
+	background: #111;
+	color: #FFF;
+	font-size: 16px;
+	padding: 7px 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+header > span {
+	background: #FFA300;
+	color: #111;
+	font-size: 14px;
+	padding: 3px 10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+form {
+	background: #DAD1B1;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 20px 0 30px 0;
+} 
+.wrapper_form_elems {
+	margin-bottom: 10px
+}
+.wrapper_form_elems > span{
+	display: inline-block;
+	margin-bottom: 3px;
+}
+.wrapper_form_elems > label{
+	display: block;
+	cursor: pointer;
+}
+input[type="text"],
+input[type="number"],
+select {
+	height: 20px;
+	width: 200px;
+	padding: 3px;
+}
+select{
+	height: 30px;
+}
+input[type="number"] {
+	width: 70px;
+}
+button[type="submit"] {
+	padding: 7px;
+	width: 210px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+.a_show,
+.url_github {
+	display: block;
+	color: #111;
+	font-weight: bold;
+	margin: 10px 0;
+}
+.a_show:hover,
+.url_github:hover { 
+	text-decoration: none;
+}
