@@ -1,3 +1,8 @@
+// stickyBlock Plugin v1.0.0 for jQuery
+// Author: M.Ulyanov
+// Created: 26/09/2015
+// Example: http://m-ulyanov.github.io/stickyblock/demo/
+
 ;(function ($) {
 
   'use struct';
@@ -40,6 +45,10 @@
         self.parent().after(currentClone);
       }
 
+      if($(currentOptions.parent).length > 0) {
+        $(currentOptions.parent).css('position', 'relative');
+      }
+
       // Create object params current block
       stickyBlocks[countId] = {
         'current': self,
@@ -48,9 +57,12 @@
         'options': currentOptions,
         'data': null,
         'dataInit': false,
-        'defaultShow': defaultShow
+        'defaultShow': defaultShow,
+        'status': null
       };
+
       stickyBlocks[countId].data = methods.setData(stickyBlocks[countId]);
+      methods.updatePosition(stickyBlocks[countId]);
 
       // Add data
       if (!$(window).data('sticky-block-events')) {
@@ -84,6 +96,7 @@
           'offset': 0
         },
         'top': 0,
+        'parent': null,
         'cache': false,
         'animate': false,
         'wrapperClass': ''
@@ -138,7 +151,8 @@
         'width': current.outerWidth(),
         'height': current.outerHeight(true),
         'startPosition': 0,
-        'endPosition': 0
+        'endPosition': 0,
+        'offsetParent': 0,
       };
 
       // Set/Update Start and End position
@@ -160,6 +174,10 @@
         }
       }
 
+      if($(options.parent).length > 0) {
+        currentData.offsetParent = $(options.parent).offset().top;
+      }
+
       return currentData;
 
     },
@@ -176,7 +194,7 @@
       var wrapper = $(block.wrapper);
 
       var scrollTop = window.pageYOffset;
-      var limit = data.endPosition - data.height - options.end.offset;
+      var limit = data.endPosition - data.height - options.end.offset + parseInt($(block.current).css('margin-bottom'));
       var showCurrentBlock = true;
       var showCloneBlock = true;
 
@@ -187,21 +205,23 @@
 
       if (scrollTop >= limit - options.top) {
         wrapper.css({
-          'top': limit
+          'top': limit - data.offsetParent
         })
         .addClass(classes.absolute).removeClass(classes.fixed);
+        methods.callEvents(block, 'sticky-block-end');
       }
       else if (scrollTop >= data.startPosition + options.start.offset) {
         wrapper.css({
           'top': options.top
         })
         .addClass(classes.fixed).removeClass(classes.absolute);
+        methods.callEvents(block, 'sticky-block-start');
       }
       else {
         wrapper.removeClass(classes.fixed + ' ' + classes.absolute);
         showCloneBlock = false;
         showCurrentBlock = false;
-
+        methods.callEvents(block, 'sticky-block-default');
       }
 
       methods.toogleCloneBlock(block, showCloneBlock);
@@ -220,6 +240,24 @@
 
       if (block.options.cache === true) return block.data;
       return this.setData(block);
+
+    },
+
+    /**
+     * Call plugin events
+     * @param block - Element of the array stickyBlocks with unique settings
+     * @param event - Current event
+     * @returns {methods} - This object
+     */
+    callEvents: function (block, event) {
+
+      var current = $(block.current);
+      if(block.status != event) {
+        $(current).trigger(event);
+        block.status = event;
+      }
+
+      return this;
 
     },
 
