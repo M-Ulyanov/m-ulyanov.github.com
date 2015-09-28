@@ -20,8 +20,10 @@ p {
 
 /* header */
 .before-header {
-  background: #ECF0F5;
+  min-width: 1280px;
   padding: 15px;
+  overflow: hidden;
+  background: #ECF0F5;
 }
 .before-header-inner {
   width: 1280px;
@@ -30,6 +32,8 @@ p {
 }
 .header {
   display: none;
+  min-width: 1280px;
+  overflow: hidden;
   background: #34495E;
 }
 .nav {
