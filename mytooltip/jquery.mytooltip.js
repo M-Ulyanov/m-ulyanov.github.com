@@ -1,4 +1,4 @@
-// myTooltip Plugin v1.0.0 for jQuery
+// myTooltip Plugin v1.0.1 for jQuery
 // Author: M.Ulyanov
 // Created: 29/09/2015
 // Example: -
@@ -86,7 +86,7 @@
         if(html !== false) currentOptions.template = html;
       }
 
-      if(currentOptions.template == null) return;
+      if(currentOptions.template == '') return;
 
 
       tooltipsStorage[id] = {
@@ -124,8 +124,17 @@
 
       var options = data.options;
       var direction = directionClasses[options.direction];
+      var template = options.template;
+      var html = null;
+
+      if(options.dinamicTemplate) {
+        template = current.attr('data-mytooltip-template');
+        html = methods.getHtmlTemplate(template);
+        template = html !== false ? html : template;
+      }
+
       var tooltip = $('<div style="display: none;" data-mytooltip-id="' + id + '" class="mytooltip system-mytooltip--' +
-          options.action + ' ' + tooltipClasses.item + ' ' + direction + ' ' + options.customClass + '">' + options.template + '</div>');
+          options.action + ' ' + tooltipClasses.item + ' ' + direction + ' ' + options.customClass + '">' + template + '</div>');
 
       if (options.theme) {
         tooltip.addClass('mytooltip-theme-' + options.theme);
@@ -508,7 +517,8 @@
         'direction'       : 'top',
         'offset'          : 10,
         'customClass'     : '',
-        'template'        : null,
+        'template'        : '',
+        'dinamicTemplate': false,
         'action'          : 'hover',
         'theme'           : 'default',
         'ignoreClass'     : 'js-mytooltip-ignore',
@@ -571,6 +581,16 @@
     update: function(params) {
 
       $(this).myTooltip(tooltipsSettingsStorage[params.selector]);
+
+    },
+
+    /**
+     * Update template
+     * @param params - object options
+     */
+    updateTemplate: function(params) {
+
+      $(this).attr('data-mytooltip-template', params.args[1]);
 
     },
 
