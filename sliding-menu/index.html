@@ -178,7 +178,7 @@
 
 <div class="code">
 <pre>
-$(function() {
+$(window).on('load', function() {
 
   var $menu = $('.menu-example-id-1');
   var $items = $menu.find('.menu-example__item');
@@ -228,7 +228,7 @@ $(function() {
 
 <div class="code">
 <pre>
-$(function() {
+$(window).on('load', function() {
 
   var $menu = $('.menu-example-id-1');
   var $items = $menu.find('.menu-example__item');
@@ -257,7 +257,7 @@ $(function() {
   </ul>
 <div class="code">
 <pre>
-$(function() {
+$(window).on('load', function() {
 
   var $menu = $('.menu-example-id-1');
   var $items = $menu.find('.menu-example__item');
@@ -266,7 +266,7 @@ $(function() {
     'items': $items,
   },
   {
-    'over': over,git
+    'over': over,
     'leave': leave
   });
 
