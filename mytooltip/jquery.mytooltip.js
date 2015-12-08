@@ -17,7 +17,8 @@
     'item'   : 'system-mytooltip--item',
     'hover'  : 'system-mytooltip--hover',
     'backing': 'system-mytooltip--backing',
-    'help'   : 'mytooltip--cursor-help'
+    'help'   : 'mytooltip--cursor-help',
+    'close'  : 'js-mytooltip-close'
   };
 
   var directionClasses = {
@@ -38,15 +39,21 @@
   /**
    * Set global events
    */
-  $(document).on('mouseleave', '.' + tooltipClasses.hover, function (event) {
+  $(document).on('mouseleave', '.' + tooltipClasses.hover, function () {
     methods.hide();
   });
 
   $(document).on('click', function (event) {
-    if (!$(event.target).hasClass(tooltipClasses.base)) {
-      tooltipLastShowId = false;
-      methods.hide();
-    }
+    var $target = $(event.target);
+    if($target.hasClass(tooltipClasses.base) ||
+      ($target.closest('.' + tooltipClasses.item).length && !$target.hasClass(tooltipClasses.close)))
+        return;
+
+    tooltipLastShowId = false;
+    methods.hide();
+
+
+
   });
 
   // Add support trim method
@@ -79,14 +86,14 @@
 
       if(methods.stringToBoolean(currentOptions.fromTitle)) {
         var selfTitle = self.attr('title');
-        currentOptions.template = selfTitle ? selfTitle : currentOptions.template;
+        currentOptions.content = selfTitle ? selfTitle : currentOptions.content;
       }
       else {
-        var html = methods.getHtmlTemplate(currentOptions.template);
-        if(html !== false) currentOptions.template = html;
+        var html = methods.getHtmlTemplate(currentOptions.content, currentOptions);
+        if(html !== false) currentOptions.content = html;
       }
 
-      if(currentOptions.template == '') return;
+      if(currentOptions.content == '') return;
 
 
       tooltipsStorage[id] = {
@@ -124,17 +131,21 @@
 
       var options = data.options;
       var direction = directionClasses[options.direction];
-      var template = options.template;
+      var content = options.content;
       var html = null;
 
-      if(options.dinamicTemplate) {
-        template = current.attr('data-mytooltip-template');
-        html = methods.getHtmlTemplate(template);
-        template = html !== false ? html : template;
+      if(options.dinamicContent) {
+        content = current.attr('data-mytooltip-content');
+        html = methods.getHtmlTemplate(content, options);
+        content = html !== false ? html : content;
       }
 
       var tooltip = $('<div style="display: none;" data-mytooltip-id="' + id + '" class="mytooltip system-mytooltip--' +
-          options.action + ' ' + tooltipClasses.item + ' ' + direction + ' ' + options.customClass + '">' + template + '</div>');
+          options.action + ' ' + tooltipClasses.item + ' ' + direction + ' ' + options.customClass + '">' + content + '</div>');
+
+      if(!methods.stringToBoolean(options.showArrow)) {
+        tooltip.addClass('mytooltip-noshow-arrow');
+      }
 
       if (options.theme) {
         tooltip.addClass('mytooltip-theme-' + options.theme);
@@ -153,9 +164,10 @@
     /**
      * getHtmlTemplate
      * @param string - selector
-     * @returns {*} - HTML template or string
+     * @param options - current options
+     * @returns {*} - HTML content or string
      */
-    getHtmlTemplate: function(string) {
+    getHtmlTemplate: function (string, options) {
 
       try {
         var selector = string.trim();
@@ -165,7 +177,9 @@
         return false;
       }
       catch (err) {
-        methods.error('Attention! ' + err);
+        if (methods.stringToBoolean(options.debug)) {
+          methods.error('Attention! ' + err);
+        }
         return false;
       }
     },
@@ -230,7 +244,9 @@
           }, duration);
           break;
         default :
-          methods.error('Direction: ' + options.direction + ' not found!');
+          if (methods.stringToBoolean(options.debug)) {
+            methods.error('Direction: ' + options.direction + ' not found!');
+          }
           return false;
       }
 
@@ -411,7 +427,9 @@
             break;
 
           default:
-            methods.error('Direction: ' + options.direction + ' not found!');
+            if (methods.stringToBoolean(options.debug)) {
+              methods.error('Direction: ' + options.direction + ' not found!');
+            }
             return false;
         }
 
@@ -469,7 +487,9 @@
           });
           break;
         default:
-          methods.error('Action: ' + options.action + ' not found!');
+          if (methods.stringToBoolean(options.debug)) {
+            methods.error('Action: ' + options.action + ' not found!');
+          }
           return false;
       }
 
@@ -509,7 +529,7 @@
 
     /**
      *
-     * @returns {{direction: string, offset: number, customClass: string, template: null, action: string, theme: string, cursorHelp: boolean, hoverTooltip: boolean, animateOffsetPx: number, animateDuration: number}}
+     * @returns {{direction: string, offset: number, customClass: string, content: null, action: string, theme: string, cursorHelp: boolean, hoverTooltip: boolean, animateOffsetPx: number, animateDuration: number}}
      */
     getDefaultOptions: function () {
 
@@ -517,18 +537,20 @@
         'direction'       : 'top',
         'offset'          : 10,
         'customClass'     : '',
-        'template'        : '',
-        'dinamicTemplate': false,
+        'content'         : '',
+        'dinamicContent'  : false,
         'action'          : 'hover',
         'theme'           : 'default',
         'ignoreClass'     : 'js-mytooltip-ignore',
+        'showArrow'       : true,
         'disposable'      : false,
         'fromTitle'       : false,
         'cursorHelp'      : false,
         'hideTime'        : false,
         'hoverTooltip'    : true,
         'animateOffsetPx' : 15,
-        'animateDuration' : 200
+        'animateDuration' : 200,
+        'debug'           : true
       }
 
     },
@@ -569,7 +591,7 @@
         methods.create(tooltipsStorage[id]);
       }
       else {
-        methods.error('Method Call: ID not found!');
+          methods.error('Method Call: ID not found!');
       }
 
     },
@@ -585,12 +607,12 @@
     },
 
     /**
-     * Update template
+     * Update content
      * @param params - object options
      */
-    updateTemplate: function(params) {
+    updateContent: function(params) {
 
-      $(this).attr('data-mytooltip-template', params.args[1]);
+      $(this).attr('data-mytooltip-content', params.args[1]);
 
     },
 

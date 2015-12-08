@@ -199,6 +199,13 @@ body {
 .style-block-four {
   background: #25B578;
 }
+.button-close {
+  width: 135px;
+  margin: 10px auto;
+  padding: 5px;
+  background: #FAC458;
+  cursor: pointer;
+}
 
 .form {
   width: 400px;
@@ -245,12 +252,12 @@ body {
 }
 
 /**/
-.mytooltip-template {
+.mytooltip-content {
   width: 250px;
   font-size: 14px;
 }
 
-.mytooltip-template img {
+.mytooltip-content img {
   margin-bottom: 10px;
 }
 
