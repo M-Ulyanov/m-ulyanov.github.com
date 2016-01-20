@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RoulleteGame</title>
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="src/RoulleteGame.css">
+  <link rel="stylesheet" href="example/example.css">
+  <script src="src/jquery-1.12.0.min.js"></script>
+  <script src="src/RoulleteGame.js"></script>
+  <script src="example/ui.js"></script>
+  <script src="example/example.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <form action="#" class="js-form-add form-add">
+    <div class="js-form-close form-close">&#10006</div>
+    <div class="form-title">Add player: </div>
+    <input class="input-default" name="name" type="text" placeholder="player name">
+    <input class="input-default" name="bet" type="text" placeholder="bet">
+    <button type="submit" class="game-button">Push</button>
+  </form>
+
+
+  <div class="js-player-winner game-winner">
+    <div class="game-title">Winner</div>
+    <div class="game-content empty align-center game-background">
+      <div class="js-empty game-empty">No winner</div>
+      <div class="js-winner"></div>
+    </div>
+  </div>
+
+  <div class="game-wrapper">
+    <div class="game-title game-title-bank">Bank: <span class="js-total-bank">0</span></div>
+    <div class="js-game-container game-container group">
+      <div class="js-game-waiting game-waiting game-background">
+        <div class="game-waiting-text js-loading">Waiting next game...</div>
+      </div>
+    </div>
+
+    <div class="js-game-start js-action-button game-start game-button hidden">Start</div>
+  </div>
+
+  <div class="game-items">
+    <div class="game-title">Players</div>
+    <div class="game-content align-center game-background">
+      <div class="js-empty game-empty">No players</div>
+      <div class="js-active-players"></div>
+      <div class="js-buttons">
+        <div class="js-add-item js-action-button game-button game-button-add">Add player</div>
+        <div class="js-game-ready js-action-button game-button">Ready</div>
+      </div>
+    </div>
+  </div>
+
+  <span class="clearfix"></span>
+
+</div>
+
+</body>
+</html>
