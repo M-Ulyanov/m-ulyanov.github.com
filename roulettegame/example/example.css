@@ -26,6 +26,25 @@ img {
   width: 1280px;
   margin: 0 auto;
 }
+.header {
+  text-align: center;
+}
+.header .dev-name {
+  display: inline-block;
+  padding: 15px;
+  margin: 20px 0;
+  color: #20243D;
+  font-size: 22px;
+  text-decoration: none;
+  background: #394263;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+.header .dev-name:hover {
+  color: #1E233E;
+  background: #49547B;
+}
 /* classes */
 .border-radius-2 {
   -moz-border-radius: 2px;
