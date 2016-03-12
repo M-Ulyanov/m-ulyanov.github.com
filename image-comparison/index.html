@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Photo comparison slider Example</title>
+  <link rel="stylesheet" href="src/css/ImageComparison.css">
+  <script src="src/js/classList.js"></script>
+  <script src="src/js/ImageComparison.js"></script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;;
+    }
+    body {
+      background: #EFEFEF;
+    }
+    .wrapper {
+      max-width: 1024px;
+      margin: 20px auto;
+    }
+  </style>
+  <script>
+
+    document.addEventListener('DOMContentLoaded', domReady);
+
+    function domReady() {
+      var imageComparisonCollection = document.querySelectorAll('.js-comparison-container');
+      for (var i = 0; i < imageComparisonCollection.length; i++) {
+        var imageWidget = imageComparisonCollection[i];
+        var images = imageWidget.querySelectorAll('.comparison-image');
+        new imageComparison({
+          container: imageWidget,
+          startPosition: imageWidget.getAttribute('start-position'),
+          data: [
+            {
+              image: images[0],
+              label: 'before'
+            },
+            {
+              image: images[1],
+              label: 'after'
+            }
+          ],
+        });
+      }
+    }
+  </script>
+
+</head>
+<body>
+  <div class="wrapper">
+    <div class="js-comparison-container">
+      <img class="comparison-image" src="src/images/1-before.jpg" alt="">
+      <img class="comparison-image" src="src/images/1-after.jpg" alt="">
+    </div>
+  </div>
+  <div class="wrapper">
+    <div class="js-comparison-container">
+      <img class="comparison-image" src="src/images/2-before.jpg" alt="">
+      <img class="comparison-image" src="src/images/2-after.jpg" alt="">
+    </div>
+  </div>
+  <div class="wrapper wrapper-3">
+    <div class="js-comparison-container" data-start-position="90">
+      <img class="comparison-image" src="src/images/3-before.jpg" alt="">
+      <img class="comparison-image" src="src/images/3-after.jpg" alt="">
+    </div>
+  </div>
+</body>
+</html>
