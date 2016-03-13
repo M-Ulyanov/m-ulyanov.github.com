@@ -9,15 +9,47 @@
   <style>
     * {
       padding: 0;
-      margin: 0;;
+      margin: 0;
     }
+
     body {
       background: #EFEFEF;
     }
+
     .wrapper {
-      max-width: 1024px;
+      max-width: 768px;
       margin: 20px auto;
+      text-align: center;
     }
+
+    .header {
+      padding: 10px;
+      text-align: center;
+      background: black;
+      color: #FFF;
+      font-size: 0;
+      box-shadow: 0px 2px 10px #736F6E;
+    }
+
+    .header h1 {
+      display: inline-block;
+      padding-top: 1px;
+      font-family: Verdana, sans-serif;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    .header h1 a {
+      color: #FFF;
+      text-decoration: none;
+    }
+
+    .iframe-wrapper {
+      display: inline-block;
+      margin-left: 15px;
+      vertical-align: top;
+    }
+
   </style>
   <script>
 
@@ -28,7 +60,7 @@
       for (var i = 0; i < imageComparisonCollection.length; i++) {
         var imageWidget = imageComparisonCollection[i];
         var images = imageWidget.querySelectorAll('.comparison-image');
-        new imageComparison({
+        new ImageComparison({
           container: imageWidget,
           startPosition: imageWidget.getAttribute('start-position'),
           data: [
@@ -48,6 +80,15 @@
 
 </head>
 <body>
+<a href="https://github.com/M-Ulyanov/ImageComparison/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+  <div class="header">
+    <h1>
+      <a href="https://github.com/M-Ulyanov/ImageComparison/">Image comparison native JS</a>
+    </h1>
+    <div class="iframe-wrapper">
+      <iframe src="https://ghbtns.com/github-btn.html?user=M-Ulyanov&repo=ImageComparison&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+    </div>
+  </div>
   <div class="wrapper">
     <div class="js-comparison-container">
       <img class="comparison-image" src="src/images/1-before.jpg" alt="">
@@ -60,7 +101,7 @@
       <img class="comparison-image" src="src/images/2-after.jpg" alt="">
     </div>
   </div>
-  <div class="wrapper wrapper-3">
+  <div class="wrapper">
     <div class="js-comparison-container" data-start-position="90">
       <img class="comparison-image" src="src/images/3-before.jpg" alt="">
       <img class="comparison-image" src="src/images/3-after.jpg" alt="">

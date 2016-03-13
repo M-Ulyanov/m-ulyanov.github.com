@@ -26,6 +26,9 @@
 .comparison-widget:hover .comparison-control:after {
   opacity: 1;
 }
+.comparison-widget--hidden {
+  opacity: 0;
+}
 .comparison-item {
   height: 100%;
   width: 100%;
@@ -55,7 +58,6 @@
 .comparison-item__image {
   display: block;
   max-width: 100%;
-  height: 100%;
   -webkit-user-drag: none;
 }
 .comparison-item--first .comparison-item__label {
