@@ -1,7 +1,11 @@
-// imageComparison 1.1.1
-// Author: M.Ulyanov
-// Created: 09/03/2016
-// Example: - http://m-ulyanov.github.io/image-comparison/
+/*
+ * imageComparison: Slider to quickly compare two images.
+ * 1.1.1
+ *
+ * By Max Ulyanov
+ * Src: https://github.com/M-Ulyanov/ImageComparison/
+ * Example https://m-ulyanov.github.io/image-comparison/
+ */
 
 
 ;(function () {
